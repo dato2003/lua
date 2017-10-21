@@ -14,16 +14,10 @@ $(PUBNUB_LUA): $(PUBNUB_COMMON_LUA) $(PUBNUB_NODE_LUA)
 	cat $(PUBNUB_COMMON_LUA) $(PUBNUB_PLATFORM_LUA) >> $(PUBNUB_LUA)
 	sed -i -e "s/VERSION/$(VERSION)/g" $(PUBNUB_LUA)
 	sed -i -e "s/PLATFORM/$(PLATFORM)/g" $(PUBNUB_LUA)
-	find examples -depth -name "example-*" -exec cp pubnub.lua {} \;
-	find examples -depth -name "example-*" -exec cp ../common/BinDecHex.lua {} \;
-	find examples -depth -name "example-*" -exec cp ../common/PubnubUtil.lua {} \;
 
 .PHONY: clean
 clean:
-	rm -f $(OUTPUT_FILES) 
-	find examples -name "pubnub.lua" -exec rm {} \; 
-	find examples -name "BinDecHex.lua" -exec rm {} \; 
-	find examples -name "PubnubUtil.lua" -exec rm {} \; 
+	rm -f $(OUTPUT_FILES)
 
 .PHONY: test
 test:
